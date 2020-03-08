@@ -5,12 +5,8 @@ import br.com.tundrae.graphics.GameWindow;
 
 import java.awt.*;
 
-public class Player implements Entity {
+public class Player extends Entity {
 
-    private int x, y;
-    private int width, height;
-
-    private boolean left, right;
     private int acceleration;
 
     public Player() {
@@ -18,7 +14,7 @@ public class Player implements Entity {
         this.height = Configuration.PLAYER_HEIGHT;
 
         this.y = GameWindow.HEIGHT - this.height;
-        this.x = (GameWindow.WIDTH / 2) - (this.width / 2);
+        this.x = (float) ((GameWindow.WIDTH / 2) - (this.width / 2));
 
         this.acceleration = Configuration.PLAYER_ACCELERATION;
     }
@@ -30,7 +26,7 @@ public class Player implements Entity {
         this.height = Configuration.PLAYER_HEIGHT;
 
         this.y = GameWindow.HEIGHT - this.height;
-        this.x = (GameWindow.WIDTH / 2) - (this.width / 2);
+        this.x = (float) ((GameWindow.WIDTH / 2) - (this.width / 2));
     }
 
     public Player(int x, int y, int acceleration) {
@@ -61,20 +57,12 @@ public class Player implements Entity {
     @Override
     public void render(Graphics g) {
         g.setColor(Configuration.PLAYER_COLOR);
-        g.fillRect(x, y, width, height);
+        g.fillRect((int) x, (int) y, width, height);
     }
 
     public void setPos(int x, int y) {
         this.x = x;
         this.y = y;
-    }
-
-    public void setLeft(boolean left) {
-        this.left = left;
-    }
-
-    public void setRight(boolean right) {
-        this.right = right;
     }
 
     public int getWidth() {
@@ -85,11 +73,11 @@ public class Player implements Entity {
         return height;
     }
 
-    public int getX() {
+    public float getX() {
         return x;
     }
 
-    public int getY() {
+    public float getY() {
         return y;
     }
 }
